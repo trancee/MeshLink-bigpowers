@@ -75,8 +75,16 @@ implementation_status:
   spec_complete: true
   spec_version: 1.0.0
   build_queue_ready: true
-  first_epic: e01-core-types
+  first_epic: e01
   security_flagged: false
+
+# Epic Cycle Tracking
+epic_cycle:
+  current_step: 9
+  current_story: e01s01
+  story_bcps: 2
+  completed_steps: [1, 2, 3, 4, 5, 6, 7, 8]
+  story_status: done
 
 # Ready for Build
 ready_for_build: true
@@ -86,7 +94,8 @@ verification_required: []
 # Handoff
 handoff:
   next_skill: build-epic
-  epic_id: e01-core-types
+  epic_id: e01
+  next_story: e01s02
 
 # Next steps
 next_steps:

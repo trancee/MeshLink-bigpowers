@@ -1,0 +1,57 @@
+public final class ch/trancee/meshlink/model/CryptoKey {
+	public static final field Companion Lch/trancee/meshlink/model/CryptoKey$Companion;
+	public static final synthetic fun box-impl ([B)Lch/trancee/meshlink/model/CryptoKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl ([BLjava/lang/Object;)Z
+	public static final fun equals-impl0 ([B[B)Z
+	public static final fun getDiagnosticId-impl ([B)Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl ([B)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl ([B)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()[B
+}
+
+public final class ch/trancee/meshlink/model/CryptoKey$Companion {
+	public final fun fromBytes-IX042DI ([B)[B
+	public final fun fromPublicKey-IX042DI ([B)[B
+}
+
+public final class ch/trancee/meshlink/model/PeerId {
+	public static final field Companion Lch/trancee/meshlink/model/PeerId$Companion;
+	public static final synthetic fun box-impl ([B)Lch/trancee/meshlink/model/PeerId;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl ([BLjava/lang/Object;)Z
+	public static final fun equals-impl0 ([B[B)Z
+	public static final fun getDiagnosticId-impl ([B)Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl ([B)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl ([B)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()[B
+}
+
+public final class ch/trancee/meshlink/model/PeerId$Companion {
+	public final fun fromBytes-a0TzCSo ([B)[B
+	public final fun generate-kHYfms0 ()[B
+}
+
+public final class ch/trancee/meshlink/model/PeerKey {
+	public static final field Companion Lch/trancee/meshlink/model/PeerKey$Companion;
+	public static final synthetic fun box-impl ([B)Lch/trancee/meshlink/model/PeerKey;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl ([BLjava/lang/Object;)Z
+	public static final fun equals-impl0 ([B[B)Z
+	public static final fun getDiagnosticId-impl ([B)Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl ([B)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl ([B)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()[B
+}
+
+public final class ch/trancee/meshlink/model/PeerKey$Companion {
+	public final fun fromBytes-v9GVozM ([B)[B
+	public final fun fromPublicKey-v9GVozM ([B)[B
+}
+

@@ -1,11 +1,11 @@
 # MeshLink Execution Status
-**Version:** 1.0.0 · **Status:** Ready for Build Phase
+**Version:** 1.0.0 · **Status:** Story Complete
 
 ## Epic Progress
 
 | Epic | Stories | Status | Percent Complete |
 |------|---------|--------|------------------|
-| e01-core-types | e01s01, e01s02, e01s03 | todo | 0% |
+| e01-core-types | e01s01 | done | 100% |
 | e02-wire-format | e02s01, e02s02, e02s03 | todo | 0% |
 | e03-noise-handshake | e03s01, e03s02, e03s03 | todo | 0% |
 | e04-nx-fallback | e04s01, e04s02, e04s03 | todo | 0% |
@@ -16,33 +16,30 @@
 | e09-ios-proof | e09s01, e09s02, e09s03, e09s04 | todo | 0% |
 | e10-power-tiers | e10s01, e10s02 | todo | 0% |
 
-## Story Dependencies
+## Story Status
 
-```
-e01s01 → e01s02 → e01s03
-   ↓      ↓
-e02s01 → e02s02 → e02s03
-   ↓      ↓      ↓
-e03s03 → e03s01 → e03s02
-   ↓      ↓      ↓
-e04s01 → e04s02 → e04s03
+### e01-core-types (WSJF 8.0)
 
-e05s01 → e05s02 → e05s03
+#### e01s01: PeerId and PeerKey Types ✅ DONE
+- **Status:** done
+- **Completed at:** 2026-07-23T17:55:00Z
+- **Tasks:**
+  1. ✅ Create PeerId value class with 16-byte enforcement and diagnosticId
+  2. ✅ Create PeerKey value class with 12-byte enforcement and fromPublicKey
+  3. ✅ Create CryptoKey value class with diagnosticId (no raw toString)
+  4. ✅ Add tests for size validation and type safety
 
-e06s01 → e06s02 → e06s03
-
-e07s01 → e07s02 → e07s03
-
-e08s01 → e08s02 → e08s03
-
-e09s01 → e09s02 → e09s03 → e09s04
-
-e10s01 → e10s02
-```
+**Implementation artifacts:**
+- `meshlink/src/commonMain/kotlin/ch/trancee/meshlink/model/PeerId.kt`
+- `meshlink/src/commonMain/kotlin/ch/trancee/meshlink/model/PeerKey.kt`
+- `meshlink/src/commonMain/kotlin/ch/trancee/meshlink/model/CryptoKey.kt`
+- `meshlink/src/commonTest/kotlin/ch/trancee/meshlink/model/PeerIdTest.kt`
+- `meshlink/src/commonTest/kotlin/ch/trancee/meshlink/model/PeerKeyTest.kt`
+- `meshlink/src/commonTest/kotlin/ch/trancee/meshlink/model/CryptoKeyTest.kt`
 
 ## Build Queue (WSJF Order)
 
-1. e01-core-types (WSJF 8.0)
+1. ~~e01-core-types (WSJF 8.0)~~ ✅ Done
 2. e09-ios-proof (WSJF 7.0, security boost)
 3. e02-wire-format (WSJF 7.5)
 4. e03-noise-handshake (WSJF 7.0)
