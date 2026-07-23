@@ -1,0 +1,45 @@
+story_id: e10s02
+title: Adaptive Grace Period
+status: failing
+bcps: 3
+tasks:
+  - id: 1
+    description: "Create PeerHistory class to track connection stability"
+    verify: "./gradlew :meshlink:test --tests 'AdaptivePeerHistoryTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Power"
+        - "Lifecycle"
+  - id: 2
+    description: "Implement AdaptiveGracePeriod calculator with stability score"
+    verify: "./gradlew :meshlink:test --tests 'AdaptiveGracePeriodTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Power"
+        - "Lifecycle"
+  - id: 3
+    description: "Add power tier consideration in grace period calculation"
+    verify: "./gradlew :meshlink:test --tests 'GracePeriodPowerTierTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Power"
+        - "Lifecycle"
+  - id: 4
+    description: "Integrate with ConnectionState for graceful transitions"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Power"
+        - "Lifecycle"

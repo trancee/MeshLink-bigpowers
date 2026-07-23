@@ -1,0 +1,24 @@
+id: e08
+title: Key Rotation
+wsjf: 5.0
+total_bcps: 8
+status: todo
+stories:
+  - id: e08s01
+    title: KeyRotationAnnouncement
+    bcps: 4
+    status: todo
+    spec: e08s01-announcement.md
+    tasks: e08s01-tasks.yaml
+  - id: e08s02
+    title: Trust Store Update
+    bcps: 2
+    status: todo
+    spec: e08s02-trust-store.md
+    tasks: e08s02-tasks.yaml
+  - id: e08s03
+    title: Propagation Logic
+    bcps: 2
+    status: todo
+    spec: e08s03-propagation.md
+    tasks: e08s03-tasks.yaml

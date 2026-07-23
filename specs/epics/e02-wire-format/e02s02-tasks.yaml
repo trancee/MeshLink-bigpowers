@@ -1,0 +1,35 @@
+story_id: e02s02
+title: Wire Codec Implementation
+status: failing
+bcps: 3
+tasks:
+  - id: 1
+    description: "Implement encode() method for all message types"
+    verify: "./gradlew :meshlink:test --tests 'WireCodecEncodeTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Wire Format"
+        - "Codec"
+  - id: 2
+    description: "Implement decode() methods with forward compatibility"
+    verify: "./gradlew :meshlink:test --tests 'WireCodecDecodeTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Wire Format"
+        - "Codec"
+  - id: 3
+    description: "Add malformed input handling tests"
+    verify: "./gradlew :meshlink:test"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "Wire Format"
+        - "Test"

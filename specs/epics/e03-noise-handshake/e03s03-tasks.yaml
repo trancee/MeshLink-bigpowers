@@ -1,0 +1,56 @@
+story_id: e03s03
+title: Crypto Provider Abstraction
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Create CryptoProvider interface with generateKeyPair, sign, verify methods"
+    verify: "./gradlew :meshlink:test --tests 'CryptoProviderTest'"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "Crypto"
+        - "Platform Integration"
+        - "Security Review"
+  - id: 2
+    description: "Implement Android Keystore expect/actual"
+    verify: "./gradlew :meshlink:compileKotlin"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Platform Integration"
+  - id: 3
+    description: "Implement iOS Security Framework expect/actual"
+    verify: "./gradlew :meshlink:compileKotlin"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Platform Integration"
+  - id: 4
+    description: "Create JVM fallback implementation for testing"
+    verify: "./gradlew :meshlink:test --tests 'JvmCryptoProviderTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Crypto"
+        - "Test"
+  - id: 5
+    description: "Add Wycheproof validation tests for Ed25519/X25519/HKDF"
+    verify: "./gradlew :meshlink:test --tests 'WycheproofValidationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Security Review"

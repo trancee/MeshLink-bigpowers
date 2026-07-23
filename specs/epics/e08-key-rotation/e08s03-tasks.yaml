@@ -1,0 +1,44 @@
+story_id: e08s03
+title: Propagation Logic
+status: failing
+bcps: 2
+tasks:
+  - id: 1
+    description: "Create KeyRotationPropagator class with broadcast method"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationPropagatorTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Key Rotation"
+        - "Routing"
+  - id: 2
+    description: "Integrate with RouteTable for neighbor discovery"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationPropagationRouteTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Key Rotation"
+        - "Routing"
+  - id: 3
+    description: "Add propagation deadline verification (3s for 2-hop)"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationDeadlineTest'"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "Key Rotation"
+        - "Test"
+  - id: 4
+    description: "Add digest-triggered full sync on mismatch"
+    verify: "./gradlew :meshlink:test"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "Key Rotation"

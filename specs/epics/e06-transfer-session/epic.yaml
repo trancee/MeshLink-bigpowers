@@ -1,0 +1,24 @@
+id: e06
+title: Transfer Session
+wsjf: 6.0
+total_bcps: 12
+status: todo
+stories:
+  - id: e06s01
+    title: Chunked Transfer Protocol
+    bcps: 6
+    status: todo
+    spec: e06s01-chunked-transfer.md
+    tasks: e06s01-tasks.yaml
+  - id: e06s02
+    title: Selective ACK (SACK)
+    bcps: 4
+    status: todo
+    spec: e06s02-selective-ack.md
+    tasks: e06s02-tasks.yaml
+  - id: e06s03
+    title: Transfer State Machine
+    bcps: 2
+    status: todo
+    spec: e06s03-state-machine.md
+    tasks: e06s03-tasks.yaml

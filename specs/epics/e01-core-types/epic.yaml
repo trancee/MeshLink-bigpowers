@@ -1,0 +1,24 @@
+id: e01
+title: Core Data Types
+wsjf: 8.0
+total_bcps: 5
+status: todo
+stories:
+  - id: e01s01
+    title: PeerId and PeerKey Types
+    bcps: 2
+    status: todo
+    spec: e01s01-peerid-peerkey.md
+    tasks: e01s01-tasks.yaml
+  - id: e01s02
+    title: TrustRecord and TrustStore
+    bcps: 2
+    status: todo
+    spec: e01s02-trust-record.md
+    tasks: e01s02-tasks.yaml
+  - id: e01s03
+    title: RouteEntry and LinkMetric
+    bcps: 1
+    status: todo
+    spec: e01s03-route-entry.md
+    tasks: e01s03-tasks.yaml

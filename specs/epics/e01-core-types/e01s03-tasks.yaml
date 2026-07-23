@@ -1,0 +1,35 @@
+story_id: e01s03
+title: RouteEntry and LinkMetric
+status: failing
+bcps: 1
+tasks:
+  - id: 1
+    description: "Create RouteEntry data class with destination, nextHop, seqNo, metric, expiresAt"
+    verify: "./gradlew :meshlink:test --tests 'RouteEntryTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+        - "Routing"
+  - id: 2
+    description: "Create LinkMetric data class with composite property combining RSSI and flags"
+    verify: "./gradlew :meshlink:test --tests 'LinkMetricTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+        - "Routing"
+  - id: 3
+    description: "Add unit tests for metric composition and RSSI normalization"
+    verify: "./gradlew :meshlink:test --tests 'LinkMetricNormalizationTest'"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "Core Types"
+        - "Test"

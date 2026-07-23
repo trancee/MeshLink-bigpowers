@@ -1,0 +1,24 @@
+id: e07
+title: Peer Lifecycle
+wsjf: 5.5
+total_bcps: 8
+status: todo
+stories:
+  - id: e07s01
+    title: Peer State Machine
+    bcps: 4
+    status: todo
+    spec: e07s01-state-machine.md
+    tasks: e07s01-tasks.yaml
+  - id: e07s02
+    title: Grace Period Logic
+    bcps: 2
+    status: todo
+    spec: e07s02-grace-period.md
+    tasks: e07s02-tasks.yaml
+  - id: e07s03
+    title: Event Emission
+    bcps: 2
+    status: todo
+    spec: e07s03-events.md
+    tasks: e07s03-tasks.yaml

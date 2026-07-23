@@ -1,0 +1,52 @@
+story_id: e05s01
+title: RouteTable and SeqNo
+status: failing
+bcps: 5
+tasks:
+  - id: 1
+    description: "Create RouteTable class with install/get methods"
+    verify: "./gradlew :meshlink:test --tests 'RouteTableTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Routing"
+        - "Core Types"
+  - id: 2
+    description: "Add seqno validation (destination self-sourced)"
+    verify: "./gradlew :meshlink:test --tests 'SeqNoValidationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Routing"
+        - "Security Review"
+  - id: 3
+    description: "Add route expiration logic"
+    verify: "./gradlew :meshlink:test --tests 'RouteExpiryTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Routing"
+  - id: 4
+    description: "Add route feasibility condition checks"
+    verify: "./gradlew :meshlink:test --tests 'FeasibilityConditionTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Routing"
+  - id: 5
+    description: "Integrate RouteTable with RouteCoordinator"
+    verify: "./gradlew :meshlink:test"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Routing"

@@ -1,0 +1,54 @@
+# Planning Context — MeshLink Core Specification
+**Created:** 2026-07-23 · **By:** elaborate-spec
+
+## Feature: Core MeshLink Protocol
+
+### Problem Statement
+
+Build a library-first SDK enabling encrypted, serverless, fully offline peer-to-peer messaging between mobile devices over BLE mesh. The protocol requires:
+1. Two-layer encryption (hop-by-hop + end-to-end)
+2. Multi-hop routing without central authority
+3. Reliable large-payload transfer over small-frame BLE
+4. Cross-platform parity between Android and iOS
+5. Power-aware operation with graceful degradation
+
+### Constraints
+
+From MeshLink-template and constitution:
+- **Zero-connectivity required** — no server contact
+- **Android API 26 / iOS 14 minimum** — guarded higher APIs
+- **One runtime dependency** — kotlinx-coroutines-core only in meshlink
+- **100% coverage gate** — applies to meshlink module only
+- **FlatBuffers wire format** — pure Kotlin implementation required
+- **Detekt zero suppressions** — test code suppressions must justify
+- **Conventional Commits** — required for all commits
+
+### Out of Scope
+
+- Server-backed features (firmware updates, remote logging)
+- Authentication beyond TOFU (OAuth, certificates)
+- Internet connectivity (Wi-Fi, cellular)
+- Cloud integration beyond Bluetooth
+- Platform UI beyond reference app
+
+### Key Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| **NX fallback for unknown keys** | PeerKey verification + rate limiting mitigates security risk |
+| **Key rotation resets seqno** | New identity gets fresh sequence from 1 |
+| **Adaptive grace periods** | Better handles real-world peer behavior |
+| **RSSI as primary metric** | Available immediately; hybrid with throughput |
+| **iOS proof in meshlink-proof** | Removes asymmetric testing gap |
+
+### Required Elaborations
+
+1. **Data model** — Peer, TrustRecord, RouteEntry, TransferSession
+2. **Public API** — MeshLink class, lifecycle methods, config DSL
+3. **Wire format** — FlatBuffers schema definitions
+
+### Next Skill Recommendation
+
+1. **scope-work** — Create SCOPE_LATEST.yaml
+2. **research-first** — Check for prior art on specific patterns
+3. **model-domain** — Refine domain language and boundaries

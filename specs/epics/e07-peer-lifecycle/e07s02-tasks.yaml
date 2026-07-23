@@ -1,0 +1,43 @@
+story_id: e07s02
+title: Grace Period Logic
+status: failing
+bcps: 2
+tasks:
+  - id: 1
+    description: "Create GracePeriodCalculator with adaptive duration based on peer stability"
+    verify: "./gradlew :meshlink:test --tests 'GracePeriodCalculatorTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+        - "Power"
+  - id: 2
+    description: "Add peer history tracking for stability score computation"
+    verify: "./gradlew :meshlink:test --tests 'PeerHistoryTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+  - id: 3
+    description: "Integrate with ConnectionState for graceful transition timing"
+    verify: "./gradlew :meshlink:test --tests 'GracePeriodIntegrationTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+  - id: 4
+    description: "Add power tier consideration in grace period calculation"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+        - "Power"

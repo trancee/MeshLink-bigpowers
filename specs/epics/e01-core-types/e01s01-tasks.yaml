@@ -1,0 +1,45 @@
+story_id: e01s01
+title: PeerId and PeerKey Types
+status: failing
+bcps: 2
+tasks:
+  - id: 1
+    description: "Create PeerId value class with 16-byte enforcement and diagnosticId"
+    verify: "./gradlew :meshlink:test --tests 'PeerIdTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+        - "Model"
+  - id: 2
+    description: "Create PeerKey value class with 12-byte enforcement and fromPublicKey"
+    verify: "./gradlew :meshlink:test --tests 'PeerKeyTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+        - "Crypto"
+  - id: 3
+    description: "Create CryptoKey value class with diagnosticId (no raw toString)"
+    verify: "./gradlew :meshlink:test --tests 'CryptoKeyTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Core Types"
+        - "Security Review"
+  - id: 4
+    description: "Add tests for size validation and type safety"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+        - "Test"

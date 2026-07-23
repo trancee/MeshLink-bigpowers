@@ -1,0 +1,47 @@
+story_id: e09s04
+title: Integration with Virtual Harness
+status: failing
+bcps: 3
+tasks:
+  - id: 1
+    description: "Create shared test vectors in commonTest for iOS consumption"
+    verify: "./gradlew :meshlink:test --tests 'WireTestVectorsTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Wire Format"
+  - id: 2
+    description: "Implement iOS test that validates JVM-generated wire format"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:IntegrationTests/testJvmWireFormat"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Wire Format"
+        - "Security Review"
+  - id: 3
+    description: "Add cross-platform handshake completion test"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:IntegrationTests/testCrossPlatformHandshake"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "iOS Proof"
+        - "Crypto"
+        - "Security Review"
+  - id: 4
+    description: "Verify iOS can send messages to JVM virtual harness"
+    verify: "xcodebuild -scheme meshlink-proof-ios test"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Integration"

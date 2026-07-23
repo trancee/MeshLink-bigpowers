@@ -1,0 +1,54 @@
+story_id: e01s02
+title: TrustRecord and TrustStore
+status: failing
+bcps: 2
+tasks:
+  - id: 1
+    description: "Create TrustRecord data class with peerId, publicKey, status, timestamps"
+    verify: "./gradlew :meshlink:test --tests 'TrustRecordTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Core Types"
+        - "Security Review"
+  - id: 2
+    description: "Create TrustStatus enum (PINNED, VERIFIED, REVOKED)"
+    verify: "./gradlew :meshlink:test --tests 'TrustStatusTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+  - id: 3
+    description: "Create TrustStore interface with get/save/revoke methods"
+    verify: "./gradlew :meshlink:test --tests 'TrustStoreTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Core Types"
+        - "Security Review"
+  - id: 4
+    description: "Create expect/actual for platform-specific keystore integration"
+    verify: "./gradlew :meshlink:compileKotlin"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Core Types"
+        - "Platform Integration"
+  - id: 5
+    description: "Add unit tests for TrustStore key rotation handling"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Core Types"
+        - "Security Review"

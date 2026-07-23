@@ -1,0 +1,35 @@
+story_id: e03s01
+title: Noise XX Handshake Implementation
+status: failing
+bcps: 5
+tasks:
+  - id: 1
+    description: "Create NoiseHandshake class with XX pattern support"
+    verify: "./gradlew :meshlink:test --tests 'NoiseHandshakeTest'"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 2
+    description: "Integrate with CryptoProvider interface"
+    verify: "./gradlew :meshlink:test --tests 'CryptoProviderIntegrationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Platform Integration"
+  - id: 3
+    description: "Validate against Wycheproof test vectors"
+    verify: "./gradlew :meshlink:test --tests 'WycheproofValidationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Security Review"

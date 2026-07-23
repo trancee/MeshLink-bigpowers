@@ -1,0 +1,24 @@
+id: e04
+title: NX Fallback
+wsjf: 6.5
+total_bcps: 10
+status: todo
+stories:
+  - id: e04s01
+    title: NX Handshake with PeerKey
+    bcps: 4
+    status: todo
+    spec: e04s01-nx-handshake.md
+    tasks: e04s01-tasks.yaml
+  - id: e04s02
+    title: Rate Limiting and Timeout
+    bcps: 3
+    status: todo
+    spec: e04s02-rate-limit.md
+    tasks: e04s02-tasks.yaml
+  - id: e04s03
+    title: MeshEnvelope Routing
+    bcps: 3
+    status: todo
+    spec: e04s03-mesh-envelope.md
+    tasks: e04s03-tasks.yaml

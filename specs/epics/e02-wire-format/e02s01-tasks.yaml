@@ -1,0 +1,55 @@
+story_id: e02s01
+title: FlatBuffers Schema Definitions
+status: failing
+bcps: 3
+tasks:
+  - id: 1
+    description: "Create MeshEnvelope schema with destination, payload, hopLimit fields"
+    verify: "./gradlew :meshlink:test --tests 'MeshEnvelopeSchemaTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Wire Format"
+        - "Routing"
+  - id: 2
+    description: "Create KeyRotationAnnouncement schema with publicKey, seqNo, signature, reason"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationAnnouncementSchemaTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Wire Format"
+        - "Security Review"
+  - id: 3
+    description: "Create RouteUpdate/RouteDigest schemas for routing"
+    verify: "./gradlew :meshlink:test --tests 'RouteUpdateSchemaTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Wire Format"
+        - "Routing"
+  - id: 4
+    description: "Create TransferChunk/TransferAck schemas for transfer"
+    verify: "./gradlew :meshlink:test --tests 'TransferSchemaTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Wire Format"
+        - "Transfer"
+  - id: 5
+    description: "Add forward-compatibility (skip unknown fields) verification"
+    verify: "./gradlew :meshlink:test --tests 'SchemaForwardCompatTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Wire Format"
+        - "Test"

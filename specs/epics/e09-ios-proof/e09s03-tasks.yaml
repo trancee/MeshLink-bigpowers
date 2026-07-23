@@ -1,0 +1,46 @@
+story_id: e09s03
+title: BLE Behavior Tests
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Create XCTest for L2CAP CoC connection establishment"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:BleBehaviorTests/testL2capCoCConnection"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Platform Integration"
+        - "Security Review"
+  - id: 2
+    description: "Add test for connection interval negotiation (15ms, 30ms, 7.5ms)"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:BleBehaviorTests/testConnectionIntervalNegotiation"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "iOS Proof"
+        - "Platform Integration"
+  - id: 3
+    description: "Add RSSI reading test during connection"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:BleBehaviorTests/testRssiReading"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "iOS Proof"
+        - "Routing"
+  - id: 4
+    description: "Add XCTSkipIf for simulator-only tests"
+    verify: "xcodebuild -scheme meshlink-proof-ios test"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "iOS Proof"
+        - "Test"

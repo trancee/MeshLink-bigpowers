@@ -1,0 +1,18 @@
+id: e10
+title: Power Tiers
+wsjf: 4.5
+total_bcps: 6
+status: todo
+stories:
+  - id: e10s01
+    title: Power Tier Enum and Settings
+    bcps: 3
+    status: todo
+    spec: e10s01-tier-settings.md
+    tasks: e10s01-tasks.yaml
+  - id: e10s02
+    title: Adaptive Grace Period
+    bcps: 3
+    status: todo
+    spec: e10s02-adaptive-grace.md
+    tasks: e10s02-tasks.yaml

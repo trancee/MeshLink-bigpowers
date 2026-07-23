@@ -1,0 +1,77 @@
+# MeshLink Core Protocol Scope
+**Version:** 1.0.0 · **Status:** Draft
+
+## Core Value
+
+Deliver a production-ready, cross-platform BLE mesh networking library with end-to-end encryption, multi-hop routing, and power-aware operation — enabling offline P2P messaging without infrastructure.
+
+## Summary
+
+MeshLink is a Kotlin Multiplatform SDK that enables encrypted peer-to-peer messaging over Bluetooth Low Energy mesh networks. The core protocol handles trust establishment (TOFU), two-layer encryption (hop-by-hop Noise XX + end-to-end Noise IX), and Babel-inspired distance-vector routing. The library operates entirely offline with no server dependencies and provides deterministic behavior across Android and iOS.
+
+This scope covers the first release implementing the minimum viable protocol: basic peer discovery, trust establishment, encrypted messaging, and routing. Advanced features (compression, group messaging, post-quantum crypto) are deferred.
+
+## Design Principle: Stable PeerId vs Volatile CryptoKey
+
+A critical correction was made to the data model:
+
+- **PeerId** (stable/random) — Generated once at install; **never changes across key rotations**
+- **PublicKey/CryptoKey** (volatile) — Can rotate; linked to stable PeerId in TrustStore
+- **Why:** Key rotation would break neighbor lookups if PeerId changed; stable identity enables correct TrustStore lookups
+
+## In Scope
+
+| Item | Maps to Epic |
+|------|--------------|
+| **Core data types** — PeerId, PeerKey, CryptoKey, TrustRecord, RouteEntry, TransferSession | e01-core-types |
+| **Wire format** — FlatBuffers schemas, encode/decode, wire compatibility tests | e02-wire-format |
+| **Noise XX handshake** — Hop-by-hop link encryption with Android/iOS platform crypto | e03-noise-handshake |
+| **Noise IX E2E** — End-to-end encryption with NX fallback for unknown keys | e04-e2e-encryption |
+| **Routing coordinator** — Babel-style seqno management, route updates, digest sync | e05-routing |
+| **Transfer session** — Chunked transfer with selective ACK (SACK) | e06-transfer |
+| **Peer lifecycle** — CONNECTED → DISCONNECTED → GONE with adaptive grace | e07-lifecycle |
+| **Key rotation** — Signed announcements, seqno reset, propagation | e08-key-rotation |
+| **iOS proof harness** — Real-device validation for iOS platform glue | e09-ios-proof |
+| **Power tiers** — Four-tier model with adaptive grace periods | e10-power-tiers |
+
+## Out of Scope
+
+| Item | Reason for Exclusion |
+|------|---------------------|
+| Group/chunk messaging | Not in MVP; requires separate protocol layer |
+| Compression (zlib/deflate/Brotli) | Performance optimization; defer until baseline proves viable |
+| Post-quantum hybrid crypto | Future enhancement; current NIST standardization incomplete |
+| Cloud/fleet management | Contradicts zero-infrastructure principle |
+| Certificate-based auth | TOFU is the defined trust model; certs add complexity |
+| Wi-Fi or other transports | BLE-only per spec; future extensions need new design |
+| Server-backed features | Configuration, logging, analytics — all offline-only |
+| macOS or other platforms | Android API 26 / iOS 14 minimum established |
+| Kotlin/Native crypto acceleration | Security framework used; native code if benchmark requires |
+
+## Constraints
+
+| Constraint | Value |
+|------------|-------|
+| **Language** | Kotlin Multiplatform (JVM + Android + iOS) |
+| **Runtime deps** | One allowed in meshlink: kotlinx-coroutines-core |
+| **Coverage gate** | 100% line/branch for meshlink module only |
+| **Platforms** | Android API 26+, iOS 14+ minimum |
+| **Wire format** | FlatBuffers (pure Kotlin, no flatc) |
+| **Testing** | No emulators for BLE; use virtual harness |
+
+## Success Criteria
+
+1. **Protocol completeness:** All Noise handshakes (XX, IX, NX) work through virtual harness
+2. **Cross-platform parity:** Android and iOS APIs identical, verified by reference module
+3. **Security validation:** Wycheproof vectors pass; no key leakage in logs/diagnostics
+4. **Performance:** Benchmarks meet constitution budgets (throughput, latency, memory)
+5. **Coverage:** 100% line/branch coverage on meshlink module
+6. **Real-device validation:** iOS proof harness exercises all platform crypto paths
+
+## References
+
+- `specs/planning-context.yaml`
+- `specs/product/SPEC_OVERVIEW.md`
+- `docs/decisions/crypto/e2e-handshake-pattern.md`
+- `docs/decisions/routing/destination-sourced-seqno-ihu-removal-digest-resync-design.md`
+- `CONSTITUTIONS.md` (MeshLink-template constitution)

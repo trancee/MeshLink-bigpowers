@@ -1,0 +1,38 @@
+# MeshLink Specification Planning Status
+
+version: 1.0.0
+derived_from: MeshLink-template
+status: complete
+
+# Discover phase
+survey_context: complete
+scope_work: complete
+research_first: complete
+elaborate_spec: complete
+plan_release: complete
+slice_tasks: complete
+
+# Key epics created
+epics:
+  - e01: core-types (4 stories, complete)
+  - e02: wire-format (3 stories, complete)
+  - e03: noise-handshake (3 stories, complete)
+  - e04: nx-fallback (3 stories, complete)
+  - e05: routing-coordinator (3 stories, complete)
+  - e06: transfer-session (3 stories, complete)
+  - e07: peer-lifecycle (3 stories, complete)
+  - e08: key-rotation (3 stories, complete)
+  - e09: ios-proof (4 stories, complete)
+  - e10: power-tiers (2 stories, complete)
+
+# Next steps
+next_steps:
+  - category: planning
+    task: Create remaining epic capsule stories (e02-e10)
+    priority: high
+  - category: planning
+    task: Add verify commands to all story tasks
+    priority: high
+  - category: planning
+    task: Run slice-tasks to finalize epic breakdown
+    priority: medium

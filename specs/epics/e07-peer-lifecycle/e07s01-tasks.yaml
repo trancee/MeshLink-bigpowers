@@ -1,0 +1,43 @@
+story_id: e07s01
+title: Peer State Machine
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Create PeerConnectionState enum (CONNECTED, DISCONNECTED - GONE internal)"
+    verify: "./gradlew :meshlink:test --tests 'PeerConnectionStateTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Lifecycle"
+        - "Core Types"
+  - id: 2
+    description: "Implement ConnectionState data class with state transitions"
+    verify: "./gradlew :meshlink:test --tests 'ConnectionStateTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Lifecycle"
+  - id: 3
+    description: "Add grace sweeps counter (0-3) for transitioning to GONE"
+    verify: "./gradlew :meshlink:test --tests 'GraceSweepTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+  - id: 4
+    description: "Add integration with RouteTable for connection state"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+        - "Routing"

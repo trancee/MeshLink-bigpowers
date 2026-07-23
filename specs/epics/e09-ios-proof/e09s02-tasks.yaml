@@ -1,0 +1,55 @@
+story_id: e09s02
+title: Security Framework Verification
+status: failing
+bcps: 5
+tasks:
+  - id: 1
+    description: "Create XCTest for iOS Security Framework Ed25519 key generation"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:SecurityFrameworkTests/testEd25519KeyGeneration"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "iOS Proof"
+        - "Security Review"
+  - id: 2
+    description: "Add XCTest for X25519 key agreement"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:SecurityFrameworkTests/testX25519KeyAgreement"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "iOS Proof"
+        - "Security Review"
+  - id: 3
+    description: "Add XCTest for ChaCha20-Poly1305 encryption/decryption"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:SecurityFrameworkTests/testChacha20Poly1305"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "iOS Proof"
+        - "Security Review"
+  - id: 4
+    description: "Verify iOS crypto matches JVM output (cross-platform parity)"
+    verify: "xcodebuild -scheme meshlink-proof-ios test -only-testing:SecurityFrameworkTests/testCrossPlatformCrypto"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Security Review"
+  - id: 5
+    description: "Run Wycheproof validation on iOS Security Framework"
+    verify: "xcodebuild -scheme meshlink-proof-ios test"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Security Review"

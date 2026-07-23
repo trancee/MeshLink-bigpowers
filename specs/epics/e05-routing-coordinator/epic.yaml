@@ -1,0 +1,24 @@
+id: e05
+title: Routing Coordinator
+wsjf: 7.0
+total_bcps: 13
+status: todo
+stories:
+  - id: e05s01
+    title: RouteTable and SeqNo
+    bcps: 5
+    status: todo
+    spec: e05s01-route-table.md
+    tasks: e05s01-tasks.yaml
+  - id: e05s02
+    title: RouteDigest Sync
+    bcps: 4
+    status: todo
+    spec: e05s02-route-digest.md
+    tasks: e05s02-tasks.yaml
+  - id: e05s03
+    title: Path Selection
+    bcps: 4
+    status: todo
+    spec: e05s03-path-selection.md
+    tasks: e05s03-tasks.yaml

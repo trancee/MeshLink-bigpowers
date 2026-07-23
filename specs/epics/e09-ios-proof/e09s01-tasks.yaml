@@ -1,0 +1,35 @@
+story_id: e09s01
+title: XCTest Target Setup
+status: failing
+bcps: 3
+tasks:
+  - id: 1
+    description: "Create Xcode scheme for meshlink-proof-ios"
+    verify: "xcodebuild -scheme meshlink-proof-ios -showBuildSettings"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Build"
+  - id: 2
+    description: "Configure CocoaPods/dependencies for test target"
+    verify: "xcodebuild -scheme meshlink-proof-ios build"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Build"
+  - id: 3
+    description: "Verify XCTest can run on simulator"
+    verify: "xcodebuild -scheme meshlink-proof-ios test"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "iOS Proof"
+        - "Test"

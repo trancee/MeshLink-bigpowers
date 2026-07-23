@@ -1,0 +1,101 @@
+# MeshLink Specification State
+
+version: 1.0.0
+derived_from: MeshLink-template
+status: ready_for_build
+last_updated: 2026-07-23T16:30:00Z
+
+# Lifecycle phase
+phase: build
+active_flow: build_epic
+completed_phases:
+  - discover
+  - plan
+phase_change_reason: SPEC.md updated from MeshLink-template with additions from existing specs; planning complete, ready for implementation
+
+# Key decisions extracted from template
+decisions:
+  - category: transport
+    summary: GATT control plane, L2CAP CoC data plane
+    source: docs/decisions/transport/gatt-l2cap-transport-selection.md
+  - category: crypto
+    summary: NX fallback with keyHash verification and rate limiting
+    source: docs/decisions/crypto/nx-fallback-mitigation.md
+  - category: routing
+    summary: Destination-self-reported seqno, Hello/IHU removed
+    source: docs/decisions/routing/destination-sourced-seqno-ihu-removal-digest-resync-design.md
+  - category: routing
+    summary: Link quality metric via RSSI normalization, flags for CoC/interval
+    source: docs/decisions/routing/link-quality-metric.md
+  - category: crypto
+    summary: Key rotation via signed announcement, seqno continuity
+    source: docs/decisions/crypto/key-rotation-protocol.md
+  - category: power
+    summary: Four-tier model with grace-period coupling
+    source: docs/decisions/power/power-tier-behavior.md
+  - category: ios
+    summary: meshlink-proof/ios module for real-device validation
+    source: docs/decisions/ios/ios-proof-module-design.md
+  - category: lifecycle
+    summary: CONNECTED → DISCONNECTED → GONE with grace period
+    source: docs/explanation/peer-lifecycle.md
+
+# Cross-platform requirements
+platforms:
+  android:
+    min_sdk: 26
+    crypto_providers:
+      - AndroidKeystore
+      - fallback_java_crypto
+  ios:
+    min_version: 14
+    crypto_providers:
+      - SecurityFramework
+      - fallback_java_crypto
+
+# Module structure
+modules:
+  - name: meshlink
+    purpose: shipped library with public API
+    coverage_gate: 100%
+    docs: dokka + skie
+  - name: meshlink-reference
+    purpose: reference app consuming public API
+    target: android + ios
+  - name: meshlink-proof
+    purpose: real device validation
+    target: android + ios
+    scope: crypto provider, BLE behavior
+  - name: meshlink-benchmark
+    purpose: performance validation
+    target: jvm + real devices
+
+# Implementation Status
+implementation_status:
+  spec_complete: true
+  spec_version: 1.0.0
+  build_queue_ready: true
+  first_epic: e01-core-types
+  security_flagged: false
+
+# Ready for Build
+ready_for_build: true
+build_start_blocked_by: []
+verification_required: []
+
+# Handoff
+handoff:
+  next_skill: build-epic
+  epic_id: e01-core-types
+
+# Next steps
+next_steps:
+  - category: build
+    task: Implement e01-core-types (PeerId, PeerKey, CryptoKey, TrustRecord, RouteEntry, TransferSession)
+    priority: critical
+  - category: build
+    task: Implement e02-wire-format (FlatBuffers schemas, encode/decode)
+    priority: high
+  - category: build
+    task: Implement e03-noise-handshake (XX/IX patterns)
+    priority: high

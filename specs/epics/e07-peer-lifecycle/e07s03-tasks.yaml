@@ -1,0 +1,44 @@
+story_id: e07s03
+title: Event Emission
+status: failing
+bcps: 2
+tasks:
+  - id: 1
+    description: "Create PeerEvent sealed class with Connected/Disconnected subtypes"
+    verify: "./gradlew :meshlink:test --tests 'PeerEventTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+        - "API"
+  - id: 2
+    description: "Add observeEvents() method using SharedFlow"
+    verify: "./gradlew :meshlink:test --tests 'EventFlowTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"
+        - "API"
+  - id: 3
+    description: "Add duplicate event prevention logic"
+    verify: "./gradlew :meshlink:test --tests 'EventDeduplicationTest'"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "Lifecycle"
+        - "Test"
+  - id: 4
+    description: "Integrate with ConnectionState for event emission"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Lifecycle"

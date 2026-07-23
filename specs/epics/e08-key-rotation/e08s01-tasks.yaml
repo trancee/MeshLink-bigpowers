@@ -1,0 +1,45 @@
+story_id: e08s01
+title: KeyRotationAnnouncement
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Create KeyRotationAnnouncement data class with publicKey, seqNo, signature, reason"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationAnnouncementTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Key Rotation"
+        - "Core Types"
+  - id: 2
+    description: "Add FlatBuffers encoding/decoding in WireCodec"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationAnnouncementCodecTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Key Rotation"
+        - "Wire Format"
+  - id: 3
+    description: "Implement signature generation with old private key"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationSignatureTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Key Rotation"
+        - "Security Review"
+  - id: 4
+    description: "Add seqNo reset to 1 on rotation"
+    verify: "./gradlew :meshlink:test --tests 'KeyRotationSeqnoTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Key Rotation"
+        - "Security Review"

@@ -1,0 +1,45 @@
+story_id: e04s01
+title: NX Handshake with PeerKey
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Implement Noise NX handshake state machine (one-way authentication)"
+    verify: "./gradlew :meshlink:test --tests 'NoiseNxHandshakeTest'"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 2
+    description: "Add PeerKey verification after NX handshake completes"
+    verify: "./gradlew :meshlink:test --tests 'NxPeerKeyVerificationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 3
+    description: "Integrate NX handshake with TrustStore for key adoption"
+    verify: "./gradlew :meshlink:test --tests 'NxTrustStoreIntegrationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 4
+    description: "Add diagnostic event emission for fallback handshake tracking"
+    verify: "./gradlew :meshlink:test --tests 'NxDiagnosticsTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Crypto"
+        - "Diagnostics"

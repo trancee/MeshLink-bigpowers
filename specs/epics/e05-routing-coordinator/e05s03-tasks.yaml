@@ -1,0 +1,42 @@
+story_id: e05s03
+title: Path Selection
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Implement FeasibilityCondition from RFC 8966"
+    verify: "./gradlew :meshlink:test --tests 'FeasibilityConditionTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Routing"
+  - id: 2
+    description: "Create PathSelector with hop count and metric comparison"
+    verify: "./gradlew :meshlink:test --tests 'PathSelectorTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Routing"
+  - id: 3
+    description: "Add metric tie-breaking tests (lower hops preferred)"
+    verify: "./gradlew :meshlink:test --tests 'PathSelectionMetricTest'"
+    risk: P3
+    status: failing
+    allure:
+      severity: minor
+      categories:
+        - "Routing"
+        - "Test"
+  - id: 4
+    description: "Integrate with RouteTable for route updates"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Routing"

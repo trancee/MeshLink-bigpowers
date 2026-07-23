@@ -1,0 +1,45 @@
+story_id: e08s02
+title: Trust Store Update
+status: failing
+bcps: 2
+tasks:
+  - id: 1
+    description: "Add handleKeyRotation() method to TrustStore interface"
+    verify: "./gradlew :meshlink:test --tests 'TrustStoreKeyRotationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Key Rotation"
+        - "Security Review"
+  - id: 2
+    description: "Implement signature verification using old known key"
+    verify: "./gradlew :meshlink:test --tests 'TrustStoreSignatureVerificationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Key Rotation"
+        - "Security Review"
+  - id: 3
+    description: "Store new key while retaining old for grace period"
+    verify: "./gradlew :meshlink:test --tests 'TrustStoreGracePeriodTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Key Rotation"
+        - "Security Review"
+  - id: 4
+    description: "Add trust store update integration tests"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Key Rotation"
+        - "Test"

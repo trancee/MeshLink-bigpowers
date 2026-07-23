@@ -1,0 +1,55 @@
+story_id: e03s02
+title: Noise IX E2E Handshake
+status: failing
+bcps: 6
+tasks:
+  - id: 1
+    description: "Implement Noise IX handshake state machine for E2E encryption"
+    verify: "./gradlew :meshlink:test --tests 'NoiseIxHandshakeTest'"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 2
+    description: "Add IX payload encoding for MeshEnvelope transport"
+    verify: "./gradlew :meshlink:test --tests 'NoiseIxPayloadTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Wire Format"
+  - id: 3
+    description: "Integrate with CryptoProvider for X25519 operations"
+    verify: "./gradlew :meshlink:test --tests 'NoiseIxCryptoIntegrationTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Platform Integration"
+  - id: 4
+    description: "Add Wycheproof validation for ChaChaPoly after IX handshake"
+    verify: "./gradlew :meshlink:test --tests 'NoiseIxWycheproofTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 5
+    description: "Add unknown key detection tests (fails gracefully)"
+    verify: "./gradlew :meshlink:test"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Crypto"
+        - "Test"

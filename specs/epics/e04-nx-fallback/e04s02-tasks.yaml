@@ -1,0 +1,44 @@
+story_id: e04s02
+title: Rate Limiting and Timeout
+status: failing
+bcps: 3
+tasks:
+  - id: 1
+    description: "Create NxFallbackLimiter class with per-destination attempt tracking"
+    verify: "./gradlew :meshlink:test --tests 'NxFallbackLimiterTest'"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "Crypto"
+        - "Security Review"
+  - id: 2
+    description: "Implement sliding window: reset counter after 1 minute"
+    verify: "./gradlew :meshlink:test --tests 'NxRateLimitWindowTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Crypto"
+  - id: 3
+    description: "Add 10s timeout enforcement for NX vs 30s for IX"
+    verify: "./gradlew :meshlink:test --tests 'NxTimeoutTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Crypto"
+        - "Diagnostics"
+  - id: 4
+    description: "Add nonce replay protection with SeenNonceTracker"
+    verify: "./gradlew :meshlink:test --tests 'NxNonceReplayTest'"
+    risk: P2
+    status: failing
+    allure:
+      severity: normal
+      categories:
+        - "Crypto"
+        - "Security Review"
