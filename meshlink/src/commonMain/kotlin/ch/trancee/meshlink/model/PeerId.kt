@@ -48,6 +48,16 @@ value class PeerId private constructor(private val bytes: ByteArray) {
     val diagnosticId: String
         get() = "peer:${bytes[0].toInt() and 0xFF}"
 
+    /**
+     * Returns the raw bytes (clone for safety).
+     */
     internal val byteArray: ByteArray
         get() = bytes.clone()
+
+    /**
+     * Compares this PeerId with another, comparing byte contents.
+     */
+    fun contentEquals(other: PeerId): Boolean {
+        return bytes.contentEquals(other.bytes)
+    }
 }
